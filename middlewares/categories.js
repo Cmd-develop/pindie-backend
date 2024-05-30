@@ -14,7 +14,7 @@ const createCategory = async (req, res, next) => {
 };
 
 const findCategoryById = async (req, res, next) => {
-  console.log("GET /categories/:id");
+  console.log("GET /categories/:id")
   try {
     req.category = await categories.findById(req.params.id);
     next();
@@ -26,10 +26,11 @@ const findCategoryById = async (req, res, next) => {
 
 const updateCategory = async (req, res, next) => {
   try {
-    req.category = await categories.findByIdAndUpdate(req.params.id, req.body);
+    req.game = await categories.findByIdAndUpdate(req.params.id, req.body);
     next();
   } catch (error) {
-    res.status(400).send({ message: "Ошибка обновления категории" });
+    res.setHeader("Content-Type", "application/json");
+    res.status(400).send(JSON.stringify({ message: "Ошибка обновления категории" }));
   }
 };
 

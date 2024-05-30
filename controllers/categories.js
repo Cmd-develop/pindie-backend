@@ -17,9 +17,9 @@ const sendCategoryById = (req, res) => {
   res.end(JSON.stringify(req.category));
 };
 
-const sendcategoryUpdated = (req, res) => {
+const sendCategoryUpdated = (req, res) => {
   res.setHeader("Content-Type", "application/json");
-  res.end({ message: "Игра обновлена" });
+  res.status(200).send(JSON.stringify({ message: "Категория обновлена" }));
 };
 
 const sendCategoryDeleted = (req, res) => {
@@ -28,4 +28,4 @@ const sendCategoryDeleted = (req, res) => {
 };
 
 // Экспортируем контроллер
-module.exports = { sendAllCategories, sendCategoryCreated, sendCategoryById, sendcategoryUpdated, sendCategoryDeleted };
+module.exports = { sendAllCategories, sendCategoryCreated, sendCategoryById, sendCategoryUpdated, sendCategoryDeleted };

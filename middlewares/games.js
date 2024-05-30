@@ -122,5 +122,12 @@ const checkIsGameExists = async (req, res, next) => {
   }
 };
 
+const checkIsVoteRequest = async (req, res, next) => {
+  if (Object.keys(req.body).length === 1 && req.body.users) {
+    req.isVoteRequest = true;
+  }
+  next();
+};
+
 // Экспортируем функцию поиска всех игр
-module.exports = { findAllGames, createGame, findGameById, updateGame, deleteGame, checkIfCategoriesAvaliable, checkIfUsersAreSafe, checkEmptyFields, checkIsGameExists };
+module.exports = { findAllGames, createGame, findGameById, updateGame, deleteGame, checkIfCategoriesAvaliable, checkIsVoteRequest, checkIfUsersAreSafe, checkEmptyFields, checkIsGameExists };
